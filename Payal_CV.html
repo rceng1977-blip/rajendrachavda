@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Payal R. Chavda — HR & Admin Professional</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet"/>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --navy:    #1B2A4A;
+      --teal:    #2A7F7F;
+      --teal-lt: #EAF4F4;
+      --gold:    #C8973A;
+      --light:   #F7F9FC;
+      --mid:     #E4EAF2;
+      --text:    #2C3344;
+      --muted:   #6B7385;
+      --white:   #FFFFFF;
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--light);
+      color: var(--text);
+      line-height: 1.6;
+      font-size: 14px;
+    }
+
+    /* ── Page wrapper ── */
+    .page {
+      max-width: 860px;
+      margin: 40px auto;
+      background: var(--white);
+      box-shadow: 0 8px 40px rgba(27,42,74,.12);
+      border-radius: 4px;
+      overflow: hidden;
+    }
+
+    /* ── Header ── */
+    .header {
+      background: var(--navy);
+      padding: 48px 52px 40px;
+      display: flex;
+      align-items: flex-end;
+      gap: 36px;
+      position: relative;
+    }
+    .header::after {
+      content: '';
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--gold) 0%, var(--teal) 100%);
+    }
+    .header-monogram {
+      flex-shrink: 0;
+      width: 80px; height: 80px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--teal) 0%, var(--gold) 100%);
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: 1px;
+    }
+    .header-text { flex: 1; }
+    .header-name {
+      font-family: 'Playfair Display', serif;
+      font-size: 34px;
+      font-weight: 700;
+      color: var(--white);
+      letter-spacing: .5px;
+      line-height: 1.1;
+    }
+    .header-title {
+      margin-top: 6px;
+      font-size: 13px;
+      font-weight: 500;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+    .header-contact {
+      margin-top: 16px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px 20px;
+    }
+    .header-contact a, .header-contact span {
+      font-size: 12.5px;
+      color: rgba(255,255,255,.75);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+    .header-contact a:hover { color: var(--gold); }
+    .icon {
+      width: 14px; height: 14px;
+      fill: var(--gold);
+      flex-shrink: 0;
+    }
+
+    /* ── Body layout ── */
+    .body {
+      display: grid;
+      grid-template-columns: 220px 1fr;
+    }
+
+    /* ── Sidebar ── */
+    .sidebar {
+      background: var(--light);
+      border-right: 1px solid var(--mid);
+      padding: 36px 24px;
+    }
+
+    /* ── Main content ── */
+    .main { padding: 36px 40px; }
+
+    /* ── Section heading ── */
+    .section { margin-bottom: 32px; }
+    .section-title {
+      font-size: 10px;
+      font-weight: 600;
+      letter-spacing: 2.5px;
+      text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    .section-title::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: var(--teal);
+      opacity: .25;
+    }
+
+    /* ── Summary ── */
+    .summary p {
+      font-size: 13.5px;
+      color: var(--text);
+      line-height: 1.75;
+    }
+
+    /* ── Experience ── */
+    .job { margin-bottom: 26px; }
+    .job:last-child { margin-bottom: 0; }
+    .job-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: flex-start;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+    .job-company {
+      font-weight: 600;
+      font-size: 14px;
+      color: var(--navy);
+    }
+    .job-role {
+      font-size: 12.5px;
+      color: var(--teal);
+      font-weight: 500;
+      margin-top: 2px;
+    }
+    .job-period {
+      font-size: 11.5px;
+      color: var(--muted);
+      white-space: nowrap;
+      background: var(--mid);
+      padding: 3px 9px;
+      border-radius: 20px;
+      font-weight: 500;
+    }
+    .job-subheading {
+      margin: 10px 0 5px;
+      font-size: 11.5px;
+      font-weight: 600;
+      letter-spacing: 1px;
+      text-transform: uppercase;
+      color: var(--navy);
+      opacity: .65;
+    }
+    .job ul {
+      list-style: none;
+      padding: 0;
+    }
+    .job ul li {
+      font-size: 13px;
+      color: var(--text);
+      line-height: 1.65;
+      padding-left: 14px;
+      position: relative;
+      margin-bottom: 4px;
+    }
+    .job ul li::before {
+      content: '›';
+      position: absolute;
+      left: 0;
+      color: var(--teal);
+      font-weight: 700;
+    }
+
+    /* ── Divider between jobs ── */
+    .job-divider {
+      border: none;
+      border-top: 1px dashed var(--mid);
+      margin: 22px 0;
+    }
+
+    /* ── Skills grid (sidebar) ── */
+    .skill-item {
+      background: var(--white);
+      border: 1px solid var(--mid);
+      border-left: 3px solid var(--teal);
+      border-radius: 3px;
+      padding: 7px 10px;
+      font-size: 12px;
+      color: var(--text);
+      font-weight: 500;
+      margin-bottom: 7px;
+    }
+
+    /* ── Education ── */
+    .edu-item {
+      margin-bottom: 14px;
+    }
+    .edu-degree {
+      font-weight: 600;
+      font-size: 13px;
+      color: var(--navy);
+    }
+    .edu-detail {
+      font-size: 12px;
+      color: var(--muted);
+      margin-top: 2px;
+    }
+
+    /* ── Awards ── */
+    .award-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+    .award-dot {
+      margin-top: 5px;
+      width: 8px; height: 8px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex-shrink: 0;
+    }
+    .award-text {
+      font-size: 12.5px;
+      color: var(--text);
+      line-height: 1.5;
+    }
+
+    /* ── Personal info ── */
+    .info-table { width: 100%; border-collapse: collapse; }
+    .info-table tr td {
+      font-size: 12px;
+      padding: 4px 0;
+      vertical-align: top;
+    }
+    .info-table tr td:first-child {
+      color: var(--muted);
+      width: 50%;
+      font-weight: 500;
+    }
+    .info-table tr td:last-child {
+      color: var(--text);
+      font-weight: 500;
+    }
+
+    /* ── Languages ── */
+    .lang-badge {
+      display: inline-block;
+      background: var(--teal-lt);
+      color: var(--teal);
+      font-size: 11px;
+      font-weight: 600;
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin: 3px 3px 3px 0;
+    }
+
+    /* ── Tech tools ── */
+    .tool-badge {
+      display: inline-block;
+      background: var(--navy);
+      color: rgba(255,255,255,.85);
+      font-size: 11px;
+      font-weight: 500;
+      padding: 4px 10px;
+      border-radius: 3px;
+      margin: 3px 3px 3px 0;
+    }
+
+    /* ── Declaration ── */
+    .declaration {
+      margin-top: 36px;
+      padding-top: 18px;
+      border-top: 1px solid var(--mid);
+      font-size: 12px;
+      color: var(--muted);
+      font-style: italic;
+    }
+
+    @media print {
+      body { background: white; }
+      .page { margin: 0; box-shadow: none; }
+    }
+
+    @media (max-width: 600px) {
+      .body { grid-template-columns: 1fr; }
+      .sidebar { border-right: none; border-bottom: 1px solid var(--mid); }
+      .header { flex-direction: column; align-items: flex-start; padding: 32px 24px 28px; }
+      .main { padding: 24px; }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-monogram">PC</div>
+    <div class="header-text">
+      <div class="header-name">Payal R. Chavda</div>
+      <div class="header-title">HR &amp; Admin Professional</div>
+      <div class="header-contact">
+        <span>
+          <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7zm0 9.5c-1.38 0-2.5-1.12-2.5-2.5S10.62 6.5 12 6.5s2.5 1.12 2.5 2.5S13.38 11.5 12 11.5z"/></svg>
+          B5-203, Yogi Residency, Atladara, Vadodara – 390012
+        </span>
+        <a href="tel:+917984130080">
+          <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M6.62 10.79a15.05 15.05 0 0 0 6.59 6.59l2.2-2.2a1 1 0 0 1 1.02-.24c1.12.37 2.33.57 3.57.57a1 1 0 0 1 1 1V20a1 1 0 0 1-1 1C10.61 21 3 13.39 3 4a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1c0 1.25.2 2.45.57 3.57a1 1 0 0 1-.25 1.02l-2.2 2.2z"/></svg>
+          +91-7984130080
+        </a>
+        <a href="mailto:payalchavda.2304@gmail.com">
+          <svg class="icon" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4-8 5-8-5V6l8 5 8-5v2z"/></svg>
+          payalchavda.2304@gmail.com
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- BODY -->
+  <div class="body">
+
+    <!-- SIDEBAR -->
+    <aside class="sidebar">
+
+      <div class="section">
+        <div class="section-title">Core Skills</div>
+        <div class="skill-item">Recruitment &amp; Hiring</div>
+        <div class="skill-item">Payroll &amp; Attendance Mgmt</div>
+        <div class="skill-item">Onboarding &amp; Offboarding</div>
+        <div class="skill-item">Leave Management</div>
+        <div class="skill-item">Vendor Management</div>
+        <div class="skill-item">Admin &amp; Inventory Control</div>
+        <div class="skill-item">Student &amp; Parent Counseling</div>
+        <div class="skill-item">Team Supervision</div>
+        <div class="skill-item">Event Coordination</div>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Tech &amp; Tools</div>
+        <span class="tool-badge">Office 365</span>
+        <span class="tool-badge">Naukri Portal</span>
+        <span class="tool-badge">TimesJob</span>
+        <span class="tool-badge">LinkedIn</span>
+        <span class="tool-badge">HRMS Software</span>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Languages</div>
+        <span class="lang-badge">English</span>
+        <span class="lang-badge">Gujarati</span>
+        <span class="lang-badge">Hindi</span>
+        <span class="lang-badge">Marathi</span>
+      </div>
+
+      <div class="section">
+        <div class="section-title">Personal Info</div>
+        <table class="info-table">
+          <tr><td>Date of Birth</td><td>23 Apr 1986</td></tr>
+          <tr><td>Gender</td><td>Female</td></tr>
+          <tr><td>Marital Status</td><td>Married</td></tr>
+        </table>
+      </div>
+
+    </aside>
+
+    <!-- MAIN -->
+    <main class="main">
+
+      <!-- Summary -->
+      <div class="section summary">
+        <div class="section-title">Professional Summary</div>
+        <p>Dedicated HR &amp; Admin professional with <strong>10+ years of experience</strong> across human resources, administration, event coordination, and customer operations. Proven track record at leading IT and education companies. Skilled in end-to-end recruitment, payroll management, vendor coordination, and team supervision. Multilingual communicator with strong organizational and interpersonal abilities.</p>
+      </div>
+
+      <!-- Experience -->
+      <div class="section">
+        <div class="section-title">Work Experience</div>
+
+        <!-- Job 1 -->
+        <div class="job">
+          <div class="job-header">
+            <div>
+              <div class="job-company">Vagaro Technologies Pvt. Ltd.</div>
+              <div class="job-role">HR Executive</div>
+            </div>
+            <span class="job-period">2017 – 2022</span>
+          </div>
+          <div class="job-subheading">Human Resources</div>
+          <ul>
+            <li>End-to-end recruitment for IT roles (iOS, .NET, UI/UX Design) via Naukri, TimesJob &amp; LinkedIn</li>
+            <li>Managed candidate shortlisting, salary negotiation, and onboarding within target deadlines</li>
+            <li>Maintained payroll data, verified attendance via HRMS, and handled leave management</li>
+            <li>Directly reported to HR &amp; Operations Director</li>
+          </ul>
+          <div class="job-subheading">Administration</div>
+          <ul>
+            <li>Managed food stock, vendor relationships, and procurement of admin consumables</li>
+            <li>Maintained accurate stock records and ensured timely replenishment</li>
+          </ul>
+        </div>
+
+        <hr class="job-divider"/>
+
+        <!-- Job 2 -->
+        <div class="job">
+          <div class="job-header">
+            <div>
+              <div class="job-company">YLC Academy (IIT &amp; Medical Education)</div>
+              <div class="job-role">Event Organizer &amp; Counselor</div>
+            </div>
+            <span class="job-period">2013 – 2016</span>
+          </div>
+          <ul style="margin-top:10px;">
+            <li>Provided achievement-level counseling to students and parents on academic progression</li>
+            <li>Managed faculty schedules, class timetables, and daily reporting</li>
+            <li>Maintained comprehensive databases for staff, faculty, students, and results</li>
+            <li>Coordinated with branch offices for admissions, examinations, and promotional campaigns</li>
+            <li>Monitored software assets and license compliance</li>
+            <li>Organized festivals, promotional events, and quarterly parent-student review meetings</li>
+          </ul>
+        </div>
+
+        <hr class="job-divider"/>
+
+        <!-- Job 3 -->
+        <div class="job">
+          <div class="job-header">
+            <div>
+              <div class="job-company">Aditya Birla Minacs (Idea Call Center)</div>
+              <div class="job-role">Floor Supervisor</div>
+            </div>
+            <span class="job-period">2010 – 2013</span>
+          </div>
+          <ul style="margin-top:10px;">
+            <li>Joined as Call Coordinator; promoted to Floor Supervisor within 6 months</li>
+            <li>Supervised and managed a team of <strong>25 customer service representatives</strong></li>
+            <li>Optimized resource allocation and work distribution for maximum efficiency</li>
+            <li>Conducted induction training for new hires and performance improvement sessions</li>
+            <li>Managed escalated customer issues, maintaining high satisfaction scores</li>
+            <li>Maintained audit-standard records including monthly call logs and resource reports</li>
+          </ul>
+        </div>
+
+      </div>
+
+      <!-- Achievements -->
+      <div class="section">
+        <div class="section-title">Achievements &amp; Awards</div>
+        <div class="award-item">
+          <div class="award-dot"></div>
+          <div class="award-text"><strong>Best Employee Award</strong> — Vagaro Technologies (2019 &amp; 2020)</div>
+        </div>
+        <div class="award-item">
+          <div class="award-dot"></div>
+          <div class="award-text"><strong>Best Associate</strong> — ICF (Instant Customer Feedback) Award</div>
+        </div>
+        <div class="award-item">
+          <div class="award-dot"></div>
+          <div class="award-text"><strong>Best Performance Award</strong> — 2012</div>
+        </div>
+      </div>
+
+      <!-- Education -->
+      <div class="section">
+        <div class="section-title">Education</div>
+        <div class="edu-item">
+          <div class="edu-degree">Master of Arts (English)</div>
+          <div class="edu-detail">Maharashtra University &nbsp;·&nbsp; 2010 – 2013</div>
+        </div>
+        <div class="edu-item">
+          <div class="edu-degree">Bachelor of Arts</div>
+          <div class="edu-detail">Maharashtra University &nbsp;·&nbsp; 2005 – 2007</div>
+        </div>
+        <div class="edu-item" style="margin-top:10px;">
+          <div class="edu-degree" style="font-size:12px; font-weight:500; color:var(--muted);">Computer Proficiency</div>
+          <div class="edu-detail">Office 365 (Word, Excel, Outlook) &nbsp;·&nbsp; Naukri Portal &nbsp;·&nbsp; HRMS Attendance Software</div>
+        </div>
+      </div>
+
+      <!-- Declaration -->
+      <div class="declaration">
+        I hereby declare that the information provided above is true and accurate to the best of my knowledge.
+      </div>
+
+    </main>
+  </div><!-- /body -->
+
+</div><!-- /page -->
+</body>
+</html>
