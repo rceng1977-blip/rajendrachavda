@@ -565,7 +565,7 @@ footer span{font-size:12px;color:var(--text3)}
         Key Achievements <span class="click-hint">click to collapse</span>
         <span class="acc-arrow" id="arrow-ach-body" style="margin-left:auto;font-size:14px;transition:transform 0.3s;display:inline-block;color:var(--azure2);">▾</span>
       </div>
-      <div id="ach-body" class="acc-body" style="overflow:hidden;transition:max-height 0.5s cubic-bezier(0.16,1,0.3,1),opacity 0.3s ease;max-height:1000px;opacity:1;">
+      <div id="ach-body" class="acc-body" style="overflow:hidden;transition:max-height 0.5s cubic-bezier(0.16,1,0.3,1),opacity 0.3s ease;max-height:3000px;opacity:1;">
         <div class="ach-grid stagger">
         <div class="ach-card">
           <div class="ach-icon">☁️</div>
@@ -573,7 +573,7 @@ footer span{font-size:12px;color:var(--text3)}
         </div>
         <div class="ach-card">
           <div class="ach-icon">🤖</div>
-          <div class="ach-text"><strong>Copilot Studio CRM AI Agent</strong> — Integrated with Dataverse (rishabhsoft.crm8.dynamics.com), delivering plain-English business insights to management via Microsoft Teams.</div>
+          <div class="ach-text"><strong>Copilot Studio CRM AI Agent</strong> — Integrated with Dataverse (<span style="font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--azure2)">rishabhsoft.crm8.dynamics.com</span>), delivering plain-English business insights to management via Microsoft Teams.</div>
         </div>
         <div class="ach-card">
           <div class="ach-icon">🔐</div>
@@ -591,6 +591,7 @@ footer span{font-size:12px;color:var(--text3)}
           <div class="ach-icon">💾</div>
           <div class="ach-text"><strong>LTO + Azure Blob Storage Strategy</strong> — Consolidated tape infrastructure reducing backup overhead while achieving BCP-grade recovery objectives per organizational policy.</div>
         </div>
+
       </div><!-- close ach-grid -->
       </div><!-- close ach-body -->
     </section>
@@ -644,38 +645,12 @@ footer span{font-size:12px;color:var(--text3)}
                 <span class="proj-badge inhouse">In-House Projects</span>
               </div>
               <div class="proj-items">
-                <div class="proj-item" style="border-color:rgba(167,139,250,0.2);background:rgba(167,139,250,0.03)">
-                  <div class="proj-item-icon">🔄</div>
-                  <div>
-                    <div class="proj-item-title">Dynamics 365 CRM — Tenant to Tenant Migration <span style="font-size:10px;background:rgba(251,191,36,0.12);border:1px solid rgba(251,191,36,0.3);color:#fbbf24;padding:2px 9px;border-radius:100px;font-family:'JetBrains Mono',monospace;font-weight:600;letter-spacing:0.06em;vertical-align:middle;margin-left:6px">Ongoing</span></div>
-                    <div class="proj-item-desc">
-                      End-to-end migration of Dynamics 365 CRM from source tenant to target tenant — currently in progress:
-                      <ul style="margin-top:8px;padding-left:16px;display:flex;flex-direction:column;gap:5px">
-                        <li>Comprehensive <strong>assessment of existing D365 tenant</strong> — reviewing schema, entities, customisations, and dependencies</li>
-                        <li><strong>Solution and schema export</strong> from source tenant; import and deployment into target tenant environment</li>
-                        <li>Setup of <strong>live forms and website integrations</strong> in the target tenant</li>
-                        <li><strong>Dependency resolution</strong> — identifying and installing all required apps and components in correct order</li>
-                        <li><strong>Environment creation</strong> — provisioning sandbox and production environments in the target tenant</li>
-                        <li>Ongoing validation, configuration alignment, and go-live preparation</li>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
 
-                <div class="proj-item" style="border-color:rgba(34,211,238,0.2);background:rgba(34,211,238,0.03)">
+                <div class="proj-item" style="border-color:rgba(52,211,153,0.25);background:rgba(52,211,153,0.03)">
                   <div class="proj-item-icon">✅</div>
                   <div>
-                    <div class="proj-item-title">Dynamics 365 CRM — SMB Tenant Migration <span style="font-size:10px;background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.3);color:#34d399;padding:2px 9px;border-radius:100px;font-family:'JetBrains Mono',monospace;font-weight:600;letter-spacing:0.06em;vertical-align:middle;margin-left:6px">100% Success</span></div>
-                    <div class="proj-item-desc">
-                      Successfully migrated a small business Dynamics 365 CRM tenant with <strong>10+ licensed users</strong> to a new tenant — achieving a <strong>100% data migration rate</strong> with zero loss:
-                      <ul style="margin-top:8px;padding-left:16px;display:flex;flex-direction:column;gap:5px">
-                        <li>Full migration of <strong>custom fields and Dataverse schema</strong> — entities, relationships, option sets, and business rules</li>
-                        <li>Migrated all <strong>Leads and Opportunities</strong> with complete history, ownership, and stage data intact</li>
-                        <li>Transferred all associated CRM data including accounts, contacts, activities, and notes</li>
-                        <li>Re-configured <strong>user roles, security profiles</strong>, and access permissions in target tenant</li>
-                        <li>Post-migration validation confirmed <strong>100% data accuracy</strong> — all records verified by business owner</li>
-                      </ul>
-                    </div>
+                    <div class="proj-item-title">Dynamics 365 CRM — Tenant to Tenant Migration <span style="font-size:10px;background:rgba(52,211,153,0.1);border:1px solid rgba(52,211,153,0.3);color:#34d399;padding:2px 9px;border-radius:100px;font-family:'JetBrains Mono',monospace;font-weight:600;letter-spacing:0.06em;vertical-align:middle;margin-left:6px">100% Success</span></div>
+                    <div class="proj-item-desc">Successfully completed end-to-end migration of Dynamics 365 CRM from source tenant to target tenant — including comprehensive D365 tenant assessment, schema &amp; solution export/import, environment creation (sandbox &amp; production), live form and website setup, dependency resolution, and all required app installation. Migrated <strong>10+ licensed users</strong> with full Dataverse schema, custom fields, Leads, Opportunities, accounts, contacts, activities, and all CRM data with a <strong>100% data migration rate</strong> and zero loss. User roles, security profiles, and access permissions re-configured. Post-migration accuracy verified by business owner.</div>
                   </div>
                 </div>
 
