@@ -38,8 +38,8 @@ svg{display:block}
 .sr{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0)}
 
 /* ===== Stage: fixed 1280x720 canvas scaled to fit, like PowerPoint ===== */
-#stage{position:absolute;left:50%;top:50%;width:1280px;height:720px;transform-origin:center;transform:translate(-50%,-50%) scale(var(--s,1));background:#fff;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5)}
-.slide{position:absolute;inset:0;padding:78px 56px 70px;opacity:0;visibility:hidden;transform:translateX(60px);transition:opacity .6s var(--ease),transform .6s var(--ease),visibility .6s}
+#stage{--px:max(56px,calc((var(--W,1280px) - 1168px) / 2));position:absolute;left:50%;top:50%;width:var(--W,1280px);height:var(--H,720px);transform-origin:center;transform:translate(-50%,-50%) scale(var(--s,1));background:#fff;overflow:hidden;box-shadow:0 30px 80px rgba(0,0,0,.5)}
+.slide{position:absolute;inset:0;padding:78px var(--px) 70px;opacity:0;visibility:hidden;transform:translateX(60px);transition:opacity .6s var(--ease),transform .6s var(--ease),visibility .6s}
 .slide.prev{transform:translateX(-60px)}
 .slide.vc{display:flex;flex-direction:column;justify-content:center}
 .slide.active{opacity:1;visibility:visible;transform:none}
@@ -53,7 +53,7 @@ svg{display:block}
 @keyframes pulse{70%{box-shadow:0 0 0 9px rgba(46,229,157,0)}100%{box-shadow:0 0 0 0 rgba(46,229,157,0)}}
 
 /* Chrome inside stage */
-.topbar{position:absolute;left:0;right:0;top:0;height:60px;padding:0 56px;display:flex;align-items:center;justify-content:space-between;z-index:20;transition:background .4s,color .4s}
+.topbar{position:absolute;left:0;right:0;top:0;height:60px;padding:0 var(--px);display:flex;align-items:center;justify-content:space-between;z-index:20;transition:background .4s,color .4s}
 .topbar.light{background:rgba(255,255,255,.96);box-shadow:0 2px 14px rgba(10,37,64,.07)}
 .brand{display:flex;align-items:center;gap:10px;color:#fff;white-space:nowrap}
 .light .brand{color:var(--navy)}
@@ -75,7 +75,7 @@ svg{display:block}
 .btn-g:hover{background:#fff;color:var(--navy)}
 .btn-sm{padding:7px 14px;font-size:11.5px}
 
-.bottombar{position:absolute;left:0;right:0;bottom:0;height:54px;padding:0 56px;display:flex;align-items:center;justify-content:space-between;z-index:20;color:var(--muted);font:500 12px Poppins,sans-serif}
+.bottombar{position:absolute;left:0;right:0;bottom:0;height:54px;padding:0 var(--px);display:flex;align-items:center;justify-content:space-between;z-index:20;color:var(--muted);font:500 12px Poppins,sans-serif}
 .on-dark .bottombar{color:#9FB3C8}
 .ctrl{display:flex;align-items:center;gap:10px}
 .arrow{width:38px;height:38px;border-radius:50%;border:2px solid var(--line);background:#fff;color:var(--navy);display:grid;place-items:center;cursor:pointer;transition:.25s var(--ease)}
@@ -126,7 +126,7 @@ svg{display:block}
 .clist{list-style:none;margin:0;padding:0;display:grid;gap:8px;font-size:12.5px;color:#D5E3F1}
 .clist li{display:flex;gap:9px;align-items:center}
 .clist svg{width:16px;height:16px;color:var(--accent);flex:none}
-.stats{position:absolute;left:56px;right:56px;bottom:66px;display:grid;grid-template-columns:repeat(4,1fr);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:14px;backdrop-filter:blur(6px)}
+.stats{position:absolute;left:var(--px);right:var(--px);bottom:66px;display:grid;grid-template-columns:repeat(4,1fr);background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:14px;backdrop-filter:blur(6px)}
 .stat{padding:12px;text-align:center;position:relative}
 .stat+.stat::before{content:"";position:absolute;left:0;top:22%;bottom:22%;width:1px;background:rgba(255,255,255,.15)}
 .stat .n{font:800 26px Poppins,sans-serif;color:#fff;line-height:1.1}
@@ -325,7 +325,7 @@ svg{display:block}
 .cc .ico::after{display:none}
 .cc h4{color:#fff;font-size:14px}
 .cc p{color:#B8C9DC;font-size:13px}
-.foot{position:absolute;left:56px;bottom:62px;color:#7E93AB;font-size:11.5px}
+.foot{position:absolute;left:var(--px);bottom:62px;color:#7E93AB;font-size:11.5px}
 
 
 /* ===== Mobile / portrait mode: native vertical slides ===== */
@@ -399,7 +399,7 @@ html.m{scroll-snap-type:y proximity}
 @media print{
   @page{size:1280px 720px;margin:0}
   html,body{overflow:visible;height:auto;background:#fff}
-  #stage{position:static;transform:none;box-shadow:none;height:auto;overflow:visible}
+  #stage{position:static;transform:none;box-shadow:none;width:1280px!important;height:auto;overflow:visible;--px:56px}
   .slide{position:relative;height:720px;opacity:1!important;visibility:visible!important;transform:none!important;page-break-after:always;break-after:page;-webkit-print-color-adjust:exact;print-color-adjust:exact}
   .a{opacity:1!important;transform:none!important;animation:none!important}
   .topbar,.bottombar,#bar,#rotate,#net{display:none!important}
@@ -708,12 +708,19 @@ html.m{scroll-snap-type:y proximity}
   "use strict";
   var reduce = matchMedia("(prefers-reduced-motion: reduce)").matches;
   var stage = document.getElementById("stage");
+  var cv = document.getElementById("net"), ctx = cv.getContext("2d"), pts = [], CW = 1280, CH = 720;
   var slides = [].slice.call(document.querySelectorAll(".slide"));
   var N = slides.length, cur = 0, lock = false;
   document.getElementById("yr").textContent = new Date().getFullYear();
 
   // Fit 1280x720 canvas to window
-  function fit(){ var s = Math.min(innerWidth / 1280, innerHeight / 720); stage.style.setProperty("--s", s); }
+  function fit(){
+    var vw = innerWidth, vh = innerHeight, r = vw / vh, W = 1280, H = 720;
+    if (r > 16 / 9) W = Math.min(Math.round(720 * r), 2560); else H = Math.min(Math.round(1280 / r), 960);
+    stage.style.setProperty("--W", W + "px"); stage.style.setProperty("--H", H + "px");
+    stage.style.setProperty("--s", Math.min(vw / W, vh / H));
+    if (cv && cv.width !== W){ cv.width = W; cv.height = H; CW = W; CH = H; }
+  }
   addEventListener("resize", function(){ fit(); setMode(false); }); fit();
 
   // CodeGuard feature grid (18 items)
@@ -883,15 +890,15 @@ html.m{scroll-snap-type:y proximity}
   }
 
   // Network canvas on cover
-  var cv = document.getElementById("net"), ctx = cv.getContext("2d"), pts = [];
-  (function init(){ cv.width = 1280; cv.height = 720;
-    for (var i = 0; i < 60; i++) pts.push({x:Math.random()*1280, y:Math.random()*720, vx:(Math.random()-.5)*.4, vy:(Math.random()-.5)*.4}); })();
+  
+  (function init(){
+    for (var i = 0; i < 70; i++) pts.push({x:Math.random()*CW, y:Math.random()*CH, vx:(Math.random()-.5)*.4, vy:(Math.random()-.5)*.4}); })();
   function draw(){
     if (cur === 0){
-      ctx.clearRect(0,0,1280,720);
+      ctx.clearRect(0,0,CW,CH);
       for (var i = 0; i < pts.length; i++){
         var p = pts[i]; p.x += p.vx; p.y += p.vy;
-        if (p.x < 0 || p.x > 1280) p.vx *= -1; if (p.y < 0 || p.y > 720) p.vy *= -1;
+        if (p.x < 0 || p.x > CW) p.vx *= -1; if (p.y < 0 || p.y > CH) p.vy *= -1;
         ctx.fillStyle = i % 5 ? "rgba(159,196,235,.8)" : "rgba(244,123,32,.9)";
         ctx.beginPath(); ctx.arc(p.x, p.y, 1.8, 0, 6.283); ctx.fill();
         for (var j = i + 1; j < pts.length; j++){
